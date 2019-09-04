@@ -1,7 +1,8 @@
 <h1>Here are your infractions : </h1>
 <br/>
 <ul>
-	{% for q in quote_list %}
-		<li>{{ q }}</li>
+	{{ out }}
+
+	{% for o in out %}
 	{% endfor %}
 </ul>
