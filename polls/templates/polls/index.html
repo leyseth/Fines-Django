@@ -1,0 +1,19 @@
+<h1>Movielist</h1>
+<br/>
+<ul>
+    {% for m in movie_name %}
+        <li><a href='/polls/{{ m.id }}/'>{{ m.title }}</a>  {{ m.genre }}<form action='{% url 'polls:delete_movie' %}' method='POST'>{% csrf_token %}<input type='submit' value='Delete' />
+            <input type="hidden" id="movie_id" name="movie_id" value='{{ m.id }}'>
+            <input type="hidden" id="movie_name" name="movie_name" value='{{ m.title }}'>
+            <input type="hidden" id="movie_genre" name="movie_genre" value='{{ m.genre }}'></form></li>
+    {% endfor %}
+</ul>
+
+<h1>Search Quotes</h1>
+
+<form action='{% url 'polls:search_movie' %}' method='POST'>
+{% csrf_token %}
+<label for = 'search_term'>Your Search : </label>
+<input id='search_term' type='text' name='search_term''>
+<input type='submit' value='Search' />
+</form>

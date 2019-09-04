@@ -1,0 +1,19 @@
+<h1>Here are the actors of {{ movie_name }}: </h1>
+<br/>
+<ul>
+    {% for a in actor_name %}
+        <li>{{ a.name }} <form action='{% url 'polls:delete_actor' %}' method='POST'>{% csrf_token %}<input type='submit' value='Delete' />
+        <input type="hidden" id="movie_id" name="movie_id" value='{{ movie_id }}'>
+        <input type="hidden" id="actor_name" name="actor_name" value='{{ a.name }}'></form></li>
+    {% endfor %}
+</ul>
+
+<br/>
+<form action='{% url 'polls:add_actor' %}' method='POST'>
+    {% csrf_token %}
+    <label for = 'actor_name'>actor name: </label>
+    <input id='actor_name' type='text' name='actor_name''>
+    <input type="hidden" id="movie_id" name="movie_id" value='{{ movie_id }}'>
+    <br/>
+    <input type='submit' value='Add' />
+</form>
